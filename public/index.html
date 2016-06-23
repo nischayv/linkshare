@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="linkshare">
 <head>
     <base href="/linkshare/" />
     <title>Linkshare</title>
@@ -10,6 +10,11 @@
     <script src="./bower_components/jquery/dist/jquery.js"></script>
 </head>
 <body>
-
+<h1>Linkshare</h1>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <ui-view></ui-view>
+    </div>
+</div>
 </body>
 </html>
