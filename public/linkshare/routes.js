@@ -10,8 +10,19 @@
 
     config.$inject = ['$stateProvider'];
 
-    function config($stateProvider) {
-
+    function config($stateProvider,$urlRouterProvider) {
+        $stateProvider
+            .state('home', {
+                url: '/home',
+                templateUrl: '/template/home.html',
+                controller: 'HomeController'
+            })
+            .state('post', {
+                url: '/post',
+                templateUrl: '/template/post.html',
+                controller: 'PostController'
+            });
+        $urlRouterProvider.otherwise('home');
     }
 
 }());
