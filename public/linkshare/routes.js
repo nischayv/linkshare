@@ -18,7 +18,7 @@
                 controller: 'HomeController'
             })
             .state('post', {
-                url: '/post',
+                url: '/post/{id}',
                 templateUrl: '/template/post.html',
                 controller: 'PostController'
             });
