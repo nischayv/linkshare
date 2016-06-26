@@ -7,7 +7,7 @@
         'linkshare.config',
         'linkshare.service',
         'linkshare.controller',
-        'linkshare.route',
+        'linkshare.routes',
         'linkshare.directive',
         'linkshare.templates'
     ]);

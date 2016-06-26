@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('linkshare.route', [
+        .module('linkshare.routes', [
             'ui.router',
             'linkshare.controller'
         ])
