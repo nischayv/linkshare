@@ -11,6 +11,8 @@ var app = express();
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 var db = require('./config/db');
+require('.app/models/Post');
+require('.app/models/Comment');
 
 // set our port
 var port = process.env.PORT || 8080;
@@ -32,7 +34,6 @@ require('./app/routes')(app);
 // startup our app at http://localhost:8080
 app.listen(port);
 
-// shoutout to the user
-console.log('Magic happens on port ' + port);
+console.log('Testing' + port);
 
 exports = module.exports = app;
