@@ -1,32 +1,33 @@
+//In larger apps this can be separated into multiple modules
+var express = require('express');
+var router = express.Router();
+var mongoose = require('mongoose');
+var Post = mongoose.model('Post');
+var Comment = mongoose.model('Comment');
 
+router.get('/linkshare/*', function(req, res) {
+    res.sendFile('./public/index.html');
+});
 
-module.exports = function(app) {
+router.get('/api/posts', function(req, res, next) {
+    Post.find(function(err, posts){
+        if(err){ return next(err); }
 
-    // server routes ===========================================================
-    // handle things like api calls
-    // authentication routes
-    //
-    // // sample api route
-    // app.get('/api/nerds', function(req, res) {
-    //     // use mongoose to get all nerds in the database
-    //     Nerd.find(function(err, nerds) {
-    //
-    //         // if there is an error retrieving, send the error. 
-    //         // nothing after res.send(err) will execute
-    //         if (err)
-    //             res.send(err);
-    //
-    //         res.json(nerds); // return all nerds in JSON format
-    //     });
-    // });
-
-    // route to handle creating goes here (app.post)
-    // route to handle delete goes here (app.delete)
-
-    // frontend routes =========================================================
-    // route to handle all angular requests
-    app.get('*', function(req, res) {
-        res.sendFile('./public/index.html'); // load our public/index.html file
+        res.json(posts);
     });
+});
 
-};
+router.post('/api/posts', function(req, res, next) {
+    var post = new Post(req.body);
+
+    post.save(function(err, post){
+        if(err){ return next(err); }
+
+        res.json(post);
+    });
+});
+
+
+module.exports = router;
+
+
