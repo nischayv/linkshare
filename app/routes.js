@@ -70,7 +70,13 @@ router.post('/api/posts', function(req, res, next) {
 
 //method to get specific post
 router.get('/posts/:post', function(req, res) {
-    res.json(req.post);
+    req.post.populate('comments', function(err, post) {
+        if (err) {
+            return next(err);
+        }
+
+        res.json(post);
+    });
 });
 
 //method to upvote post
