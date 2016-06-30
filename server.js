@@ -11,8 +11,8 @@ var app = express();
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 var db = require('./config/db');
-require('.app/models/Post');
-require('.app/models/Comment');
+require('./app/model/Post');
+require('./app/model/Comment');
 
 // set our port
 var port = process.env.PORT || 8080;
@@ -28,7 +28,8 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(__dirname + '/public'));
 
 // routes
-require('./app/routes')(app);
+var routes = require('./app/routes');
+app.use('/', routes);
 
 //start app at localhost:8080
 app.listen(port);
