@@ -34,6 +34,6 @@ app.use('/', routes);
 //start app at localhost:8080
 app.listen(port);
 
-console.log('Testing' + port);
+console.log('Testing on  port ' + port);
 
 exports = module.exports = app;

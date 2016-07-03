@@ -3,6 +3,6 @@
 
     angular
         .module('linkshare.controller', [
-            
+            'home.controller'
         ]);
 }());

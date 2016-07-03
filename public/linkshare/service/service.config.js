@@ -3,6 +3,6 @@
 
     angular
         .module('linkshare.service', [
-
+            'home.service'
         ]);
 }());

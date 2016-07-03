@@ -4,6 +4,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
 var Comment = mongoose.model('Comment');
+var path = require('path');
 
 //middleware to find post with id
 router.param('post', function(req, res, next, id) {
@@ -40,8 +41,8 @@ router.param('comment', function(req, res, next, id) {
 });
 
 //return homepage for angular front end
-router.get('/linkshare/*', function(req, res) {
-    res.sendFile('./public/index.html');
+router.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
 router.get('/api/posts', function(req, res, next) {
@@ -49,7 +50,6 @@ router.get('/api/posts', function(req, res, next) {
         if(err){
             return next(err);
         }
-
         res.json(posts);
     });
 });
