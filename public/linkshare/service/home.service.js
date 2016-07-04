@@ -3,22 +3,21 @@
 
     angular
         .module('home.service', [
-
+            'ngResource'
         ])
         .factory('HomeService', HomeService);
 
-    HomeService.$inject = ['$q'];
+    HomeService.$inject = ['$q', '$resource'];
 
-    function HomeService($q) {
+    function HomeService($q, $resource) {
         return {
             loadPosts: loadPosts
         };
 
         function loadPosts() {
-            return $resource('./api/posts', {}, {
+            return $resource('/api/posts', {}, {
                 execute: {
-                    method: 'GET',
-                    isArray: true
+                    method: 'GET'
                 }
             }).execute().$promise
                 .then(success)
