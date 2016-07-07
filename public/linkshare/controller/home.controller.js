@@ -1,4 +1,3 @@
-
 (function() {
     'use strict';
 
@@ -24,7 +23,7 @@
                 .then(function(data) {
                     console.log(data);
                  //   vm.posts = data;
-                    $q.resolve();
+                 //    $q.resolve();
                 })
                 .catch(function (error) {
                     console.log(error);

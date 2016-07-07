@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html ng-app="linkshare">
+<html>
 <head>
-    <title>Linkshare</title>
     <link href="./bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <script src="./bower_components/angular/angular.js"></script>
-    <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="./bower_components/angular-route/angular-route.min.js"></script>
     <script src="./bower_components/angular-resource/angular-resource.js"></script>
     <!--main js file-->
     <script src="./linkshare/linkshare.js"></script>
@@ -14,18 +13,21 @@
     <script src="./linkshare/routes.js"></script>
     <!--controllers-->
     <script src="./linkshare/controller/controller.config.js"></script>
+    <script src="./linkshare/controller/post.controller.js"></script>
     <script src="./linkshare/controller/home.controller.js"></script>
     <!--directives-->
     <script src="./linkshare/directive/directive.config.js"></script>
     <!--services-->
-    <script src="./linkshare/service/home.service.js"></script>
     <script src="./linkshare/service/service.config.js"></script>
+    <script src="./linkshare/service/home.service.js"></script>
+    <script src="./linkshare/service/post.service.js"></script>
 </head>
-<body>
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <ui-view></ui-view>
+<body ng-app="linkshare">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>Linkshare</h1>
+            <div ng-view></div>
+        </div>
     </div>
-</div>
 </body>
 </html>

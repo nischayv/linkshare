@@ -3,26 +3,26 @@
 
     angular
         .module('linkshare.routes', [
-            'ui.router',
+            'ngRoute',
             'linkshare.controller'
         ])
         .config(config);
 
-    config.$inject = ['$stateProvider', '$urlRouterProvider'];
+    config.$inject = ['$routeProvider'];
 
-    function config($stateProvider, $urlRouterProvider) {
-        $stateProvider
-            .state('home', {
-                url: '/home',
+    function config($routeProvider) {
+        $routeProvider
+            .when('/home', {
                 templateUrl: '/template/home.html',
-                controller: 'HomeController'
+                controller: 'HomeController',
+                controllerAs: 'vm'
             })
-            .state('post', {
-                url: '/post/{id}',
+            .when('/post', {
                 templateUrl: '/template/post.html',
-                controller: 'PostController'
-            });
-        $urlRouterProvider.otherwise('home');
+                controller: 'PostController',
+                controllerAs: 'vm'
+            })
+            .otherwise('/home');
     }
 
 }());
