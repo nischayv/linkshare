@@ -3,6 +3,7 @@
 
     angular
         .module('linkshare.service', [
-            'home.service'
+            'home.service',
+            'post.service'
         ]);
 }());

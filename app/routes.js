@@ -40,7 +40,7 @@ router.param('comment', function(req, res, next, id) {
     });
 });
 
-//return homepage for angular front end
+// return homepage for angular front end
 router.get('*', function(req, res) {
     res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
@@ -69,7 +69,7 @@ router.post('/api/posts', function(req, res, next) {
 });
 
 //method to get specific post
-router.get('/posts/:post', function(req, res) {
+router.get('/api/posts/:post', function(req, res) {
     req.post.populate('comments', function(err, post) {
         if (err) {
             return next(err);
@@ -80,7 +80,7 @@ router.get('/posts/:post', function(req, res) {
 });
 
 //method to upvote post
-router.put('/posts/:post/upvote', function(req, res, next) {
+router.put('/api/posts/:post/upvote', function(req, res, next) {
     req.post.upvote(function(err, post){
         if (err) {
             return next(err);
@@ -91,7 +91,7 @@ router.put('/posts/:post/upvote', function(req, res, next) {
 });
 
 //method to add new comment
-router.post('/posts/:post/comment', function(req, res, next) {
+router.post('/api/posts/:post/comment', function(req, res, next) {
     var comment = new Comment(req.body);
     comment.post = req.post;
 
@@ -112,7 +112,7 @@ router.post('/posts/:post/comment', function(req, res, next) {
 });
 
 //method to upvote comment
-router.put('/posts/:post/comment/:comment/upvote', function(req, res, next) {
+router.put('/api/posts/:post/comment/:comment/upvote', function(req, res, next) {
     req.comment.upvote(function(err, comment){
         if (err) {
             return next(err);

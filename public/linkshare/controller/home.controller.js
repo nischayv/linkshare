@@ -22,8 +22,8 @@
             return HomeService.loadPosts()
                 .then(function(data) {
                     console.log(data);
-                 //   vm.posts = data;
-                 //    $q.resolve();
+                    vm.posts = data;
+                    $q.resolve();
                 })
                 .catch(function (error) {
                     console.log(error);

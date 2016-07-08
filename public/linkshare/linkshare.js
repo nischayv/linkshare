@@ -4,9 +4,8 @@
     angular.module('linkshare', [
         'ngRoute',
         'ui.bootstrap',
-        'linkshare.service',
-        'linkshare.controller',
         'linkshare.routes',
-        'linkshare.directive'
+        'linkshare.service',
+        'linkshare.controller'
     ]);
 }());

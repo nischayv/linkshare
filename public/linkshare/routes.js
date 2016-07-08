@@ -8,21 +8,22 @@
         ])
         .config(config);
 
-    config.$inject = ['$routeProvider'];
+    config.$inject = ['$routeProvider', '$locationProvider'];
 
-    function config($routeProvider) {
+    function config($routeProvider, $locationProvider) {
         $routeProvider
             .when('/home', {
-                templateUrl: '/template/home.html',
+                templateUrl: 'linkshare/template/home.html',
                 controller: 'HomeController',
                 controllerAs: 'vm'
             })
             .when('/post', {
-                templateUrl: '/template/post.html',
+                templateUrl: 'linkshare/template/post.html',
                 controller: 'PostController',
                 controllerAs: 'vm'
             })
             .otherwise('/home');
+        // $locationProvider.html5Mode(true);
     }
 
 }());
