@@ -17,13 +17,12 @@
                 controller: 'HomeController',
                 controllerAs: 'vm'
             })
-            .when('/post', {
+            .when('/post/{id}', {
                 templateUrl: 'linkshare/template/post.html',
                 controller: 'PostController',
                 controllerAs: 'vm'
             })
             .otherwise('/home');
-        // $locationProvider.html5Mode(true);
     }
 
 }());
