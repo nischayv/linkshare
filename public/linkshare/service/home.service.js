@@ -12,13 +12,15 @@
     function HomeService($q, $resource) {
         return {
             loadPosts: loadPosts,
-            addPost: addPost
+            addPost: addPost,
+            incrementUpvotes: incrementUpvotes
         };
 
         function loadPosts() {
             return $resource('/api/posts', {}, {
                 execute: {
-                    method: 'GET'
+                    method: 'GET',
+                    isArray: true
                 }
             }).execute().$promise
                 .then(success)
@@ -39,6 +41,24 @@
                     method: 'POST'
                 }
             }).execute({title: title, link: link}).$promise
+                .then(success)
+                .catch(fail);
+
+            function success(data) {
+                return data;
+            }
+
+            function fail(error) {
+                return $q.reject(error);
+            }
+        }
+        
+        function incrementUpvotes(id) {
+            return $resource('/api/posts/' + id + '/upvote', {}, {
+                execute: {
+                    method: 'PUT'
+                }
+            }).execute().$promise
                 .then(success)
                 .catch(fail);
 

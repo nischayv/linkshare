@@ -21,7 +21,8 @@
         function activate() {
             return HomeService.loadPosts()
                 .then(function(data) {
-                   vm.posts = data.data;
+                    console.log(data);
+                   vm.posts = data;
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -39,9 +40,15 @@
                 });
         }
 
-        function incrementUpvotes() {
-            
+        function incrementUpvotes(post) {
+            return HomeService.incrementUpvotes(post._id)
+                .then(function(data) {
+                    console.log(data);
+                    post.upvotes += 1;
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
         }
-
     }
 }());

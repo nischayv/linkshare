@@ -7,8 +7,7 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public/images', 'favicon')));
 
 var db = require('./config/db');
 require('./app/model/Post');

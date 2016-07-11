@@ -21,8 +21,8 @@
                 templateUrl: 'linkshare/template/post.html',
                 controller: 'PostController',
                 controllerAs: 'vm'
-            });
-            // .otherwise('/home');
+            })
+            .otherwise('/home');
 
        // $locationProvider.html5Mode(true);
     }

@@ -84,7 +84,6 @@ router.put('/api/posts/:post/upvote', function(req, res, next) {
         if (err) {
             return next(err);
         }
-
         res.json(post);
     });
 });
