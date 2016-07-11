@@ -17,7 +17,6 @@ router.param('post', function(req, res, next, id) {
         if (!post) {
             return next(new Error('Post does not exist'));
         }
-
         req.post = post;
         return next();
     });
@@ -34,17 +33,18 @@ router.param('comment', function(req, res, next, id) {
         if (!comment) {
             return next(new Error('Comment does not exist'));
         }
-
         req.comment = comment;
         return next();
     });
 });
 
 // return homepage for angular front end
-router.get('*', function(req, res) {
+router.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
+//REST routes
+//method to get all posts
 router.get('/api/posts', function(req, res, next) {
     Post.find(function(err, posts){
         if(err){
@@ -54,8 +54,7 @@ router.get('/api/posts', function(req, res, next) {
     });
 });
 
-//REST routes
-//method to get all posts
+//method to create new post
 router.post('/api/posts', function(req, res, next) {
     var post = new Post(req.body);
 
@@ -63,7 +62,7 @@ router.post('/api/posts', function(req, res, next) {
         if(err){
             return next(err);
         }
-
+        console.log(post);
         res.json(post);
     });
 });

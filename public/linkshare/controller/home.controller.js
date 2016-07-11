@@ -21,9 +21,7 @@
         function activate() {
             return HomeService.loadPosts()
                 .then(function(data) {
-                    console.log(data);
-                    vm.posts = data;
-                    $q.resolve();
+                   vm.posts = data.data;
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -31,7 +29,14 @@
         }
 
         function addPost() {
-
+            return HomeService.addPost(vm.title, vm.link)
+                .then(function(data) {
+                    console.log(data);
+                    vm.posts.push(data);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
         }
 
         function incrementUpvotes() {

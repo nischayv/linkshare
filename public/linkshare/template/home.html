@@ -1,3 +1,5 @@
+<h1>Linkshare</h1>
+<hr>
 <div ng-repeat="post in vm.posts | orderBy:'-vm.upvotes'">
     <span class="glyphicon glyphicon-thumbs-up" ng-click="vm.incrementUpvotes(post)"></span>
     {{post.upvotes}}
