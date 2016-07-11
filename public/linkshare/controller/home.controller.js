@@ -52,8 +52,8 @@
                 });
         }
 
-        function comments(postId) {
-            $location.path('/post').search({param: postId});
+        function comments(post) {
+            $location.path('/post').search({param: post._id});
         }
     }
 }());
