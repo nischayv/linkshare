@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-app.use(favicon(path.join(__dirname, 'public/images', 'favicon')));
+app.use(favicon(path.join(__dirname, 'public/images', 'favicon.png')));
 
 var db = require('./config/db');
 require('./app/model/Post');

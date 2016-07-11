@@ -62,7 +62,6 @@ router.post('/api/posts', function(req, res, next) {
         if(err){
             return next(err);
         }
-        console.log(post);
         res.json(post);
     });
 });

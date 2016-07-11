@@ -17,7 +17,7 @@
                 controller: 'HomeController',
                 controllerAs: 'vm'
             })
-            .when('/post/{id}', {
+            .when('/post', {
                 templateUrl: 'linkshare/template/post.html',
                 controller: 'PostController',
                 controllerAs: 'vm'

@@ -7,15 +7,16 @@
         ])
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['HomeService', '$q'];
+    HomeController.$inject = ['HomeService', '$location'];
 
-    function HomeController(HomeService, $q) {
+    function HomeController(HomeService, $location) {
         var vm = this;
         vm.posts = [];
         vm.title = '';
         vm.link = '';
         vm.addPost = addPost;
         vm.incrementUpvotes = incrementUpvotes;
+        vm.comments = comments;
         activate();
 
         function activate() {
@@ -49,6 +50,10 @@
                 .catch(function(error) {
                     console.log(error);
                 });
+        }
+
+        function comments(postId) {
+            $location.path('/post').search({param: postId});
         }
     }
 }());
