@@ -11,11 +11,11 @@
 
     function PostService($q, $resource) {
         return {
-            loadPosts: loadPosts
+            loadPost: loadPost
         };
 
-        function loadPosts() {
-            return $resource('/api/posts', {}, {
+        function loadPost(postId) {
+            return $resource('/api/posts/' + postId, {}, {
                 execute: {
                     method: 'GET'
                 }

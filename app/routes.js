@@ -72,7 +72,6 @@ router.get('/api/posts/:post', function(req, res) {
         if (err) {
             return next(err);
         }
-
         res.json(post);
     });
 });

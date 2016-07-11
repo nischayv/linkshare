@@ -53,7 +53,7 @@
         }
 
         function comments(post) {
-            $location.path('/post').search({param: post._id});
+            $location.path('/post').search({postId: post._id});
         }
     }
 }());
