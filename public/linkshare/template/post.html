@@ -1,4 +1,12 @@
 <h1><a href="{{vm.post.link}}">{{vm.post.title}}</a></h1>
+<hr>
+<div ng-repeat="comment in vm.commenta | orderBy:'-vm.upvotes'">
+    <span class="glyphicon glyphicon-thumbs-up" ng-click="vm.incrementUpvotes(comment)"></span>
+    {{comment.upvotes}}
+    <span style="font-size:20px; margin-left:10px;">
+        <span ng-hide="post.link">{{comment.body}}</span>
+    </span>
+</div>
 <form ng-submit="addComment()"
       style="margin-top:30px;">
     <h3>Add a new comment</h3>
