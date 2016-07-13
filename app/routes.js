@@ -95,13 +95,11 @@ router.post('/api/posts/:post/comment', function(req, res, next) {
         if(err){
             return next(err);
         }
-
         req.post.comments.push(comment);
         req.post.save(function(err) {
             if(err){
                 return next(err);
             }
-
             res.json(comment);
         });
     });
@@ -113,7 +111,6 @@ router.put('/api/posts/:post/comment/:comment/upvote', function(req, res, next) 
         if (err) {
             return next(err);
         }
-
         res.json(comment);
     });
 });
