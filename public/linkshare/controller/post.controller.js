@@ -12,7 +12,7 @@
     function PostController(PostService, $routeParams) {
         var vm = this;
         vm.post = {};
-        vm.user = '';
+        vm.user = 'nischayv';
         vm.comment = '';
         vm.addComment = addComment;
         vm.incrementUpvotes = incrementUpvotes;
