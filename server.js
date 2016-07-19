@@ -4,14 +4,17 @@ var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
+var passport = require('passport');
 
 var app = express();
 
 app.use(favicon(path.join(__dirname, 'public/images', 'favicon.png')));
 
 var db = require('./config/db');
+require('./config/passport');
 require('./app/model/Post');
 require('./app/model/Comment');
+require('./app/model/User');
 
 // set our port
 var port = process.env.PORT || 8080;
@@ -25,6 +28,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(__dirname + '/public'));
+app.use(passport.initialize());
 
 // routes
 var routes = require('./app/routes');
