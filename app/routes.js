@@ -7,6 +7,9 @@ var Comment = mongoose.model('Comment');
 var path = require('path');
 var passport = require('passport');
 var User = mongoose.model('User');
+var jwt = require('express-jwt');
+
+var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
 //middleware to find post with id
 router.param('post', function(req, res, next, id) {
@@ -57,9 +60,9 @@ router.get('/api/posts', function(req, res, next) {
 });
 
 //method to create new post
-router.post('/api/posts', function(req, res, next) {
+router.post('/api/posts', auth, function(req, res, next) {
     var post = new Post(req.body);
-
+    post.author = req.payload.username;
     post.save(function(err, post){
         if(err){
             return next(err);
@@ -79,7 +82,7 @@ router.get('/api/posts/:post', function(req, res) {
 });
 
 //method to upvote post
-router.put('/api/posts/:post/upvote', function(req, res, next) {
+router.put('/api/posts/:post/upvote', auth, function(req, res, next) {
     req.post.upvote(function(err, post){
         if (err) {
             return next(err);
@@ -89,9 +92,10 @@ router.put('/api/posts/:post/upvote', function(req, res, next) {
 });
 
 //method to add new comment
-router.post('/api/posts/:post/comment', function(req, res, next) {
+router.post('/api/posts/:post/comment', auth, function(req, res, next) {
     var comment = new Comment(req.body);
     comment.post = req.post;
+    comment.author = req.payload.username;
 
     comment.save(function(err, comment){
         if(err){
@@ -108,7 +112,7 @@ router.post('/api/posts/:post/comment', function(req, res, next) {
 });
 
 //method to upvote comment
-router.put('/api/posts/:post/comment/:comment/upvote', function(req, res, next) {
+router.put('/api/posts/:post/comment/:comment/upvote', auth, function(req, res, next) {
     req.comment.upvote(function(err, comment){
         if (err) {
             return next(err);
@@ -123,7 +127,7 @@ router.post('/register', function(req, res, next){
     }
     var user = new User();
     user.username = req.body.username;
-    user.setPassword(req.body.password)
+    user.setPassword(req.body.password);
     user.save(function (err){
         if(err){
             return next(err);
