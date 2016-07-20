@@ -4,6 +4,7 @@
     angular
         .module('linkshare.controller', [
             'home.controller',
-            'post.controller'
+            'post.controller',
+            'auth.controller'
         ]);
 }());
