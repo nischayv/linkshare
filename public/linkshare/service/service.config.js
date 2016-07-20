@@ -4,6 +4,7 @@
     angular
         .module('linkshare.service', [
             'home.service',
-            'post.service'
+            'post.service',
+            'auth.service'
         ]);
 }());
