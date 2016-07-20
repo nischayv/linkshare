@@ -22,6 +22,16 @@
                 controller: 'PostController',
                 controllerAs: 'vm'
             })
+            .when('/register', {
+                templateUrl: 'linkshare/template/register.html',
+                controller: 'AuthController',
+                controllerAs: 'vm'
+            })
+            .when('/login', {
+                templateUrl: 'linkshare/template/login.html',
+                controller: 'AuthController',
+                controllerAs: 'vm'
+            })
             .otherwise('/home');
 
        $locationProvider.html5Mode(true);
