@@ -7,9 +7,9 @@
         ])
         .factory('AuthService', AuthService);
 
-    AuthService.$inject = ['$window'];
+    AuthService.$inject = ['$window', '$resource'];
 
-    function AuthService($window) {
+    function AuthService($window,$resource) {
         return {
             saveToken: saveToken,
             getToken: getToken,
@@ -42,21 +42,51 @@
         function currentUser() {
             if(isLoggedIn()){
                 var token = auth.getToken();
+                console.log('In current user auth service' + token);
                 var payload = JSON.parse($window.atob(token.split('.')[1]));
                 return payload.username;
             }
         }
 
-        function register() {
+        function register(user) {
+            return $resource('/api/register', {}, {
+                execute: {
+                    method: 'POST'
+                }
+            }).execute(user).$promise
+                .then(success)
+                .catch(fail);
 
+            function success(data) {
+                return saveToken(data.token);
+            }
+
+            function fail (error) {
+                return $q.reject(error);
+            }
         }
 
         function login() {
+            return $resource('/api/login', {}, {
+                execute: {
+                    method: 'POST'
+                }
+            }).execute(user).$promise
+                .then(success)
+                .catch(fail);
 
+            function success(data) {
+                console.log('In auth service login'+data);
+                return saveToken(data.token);
+            }
+
+            function fail (error) {
+                return $q.reject(error);
+            }
         }
 
         function logout() {
-
+            $window.localStorage.removeItem("linkshare-token");
         }
     }
 
