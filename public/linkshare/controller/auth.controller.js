@@ -12,7 +12,7 @@
     function AuthController(AuthService, $location) {
         var vm = this;
         vm.user = {};
-
+        vm.error = {};
         activate();
 
         function activate() {
@@ -21,21 +21,23 @@
 
         function register() {
             return AuthService.register(vm.user)
-                .then(function(data) {
+                .then(function() {
                     $location.path('/home');
                 })
                 .catch(function (error) {
                     console.log(error);
+                    vm.error = error;
                 });
         }
 
         function login() {
             return AuthService.login(vm.user)
-                .then(function(data) {
+                .then(function() {
                     $location.path('/home');
                 })
                 .catch(function (error) {
                     console.log(error);
+                    vm.error = error;
                 });
         }
     }
