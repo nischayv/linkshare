@@ -16,7 +16,9 @@
         activate();
 
         function activate() {
-
+            if(AuthService.isLoggedIn) {
+                $location.path('/home');
+            }
         }
 
         function register() {
