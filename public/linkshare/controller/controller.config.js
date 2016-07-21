@@ -5,6 +5,7 @@
         .module('linkshare.controller', [
             'home.controller',
             'post.controller',
-            'auth.controller'
+            'auth.controller',
+            'navbar.controller'
         ]);
 }());
