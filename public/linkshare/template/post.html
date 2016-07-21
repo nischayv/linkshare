@@ -7,7 +7,7 @@
     <span style="font-size:20px; margin-left:10px;">
         <span ng-hide="post.link">{{comment.body}}</span>
     </span>
-    <!-- - by {{vm.user}}-->
+     - by {{comment.author}}
 </div>
 <form ng-submit="vm.addComment()" style="margin-top:30px;"  ng-show="isLoggedIn()">
     <h3>Add a new comment</h3>
