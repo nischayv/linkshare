@@ -11,10 +11,10 @@ var app = express();
 app.use(favicon(path.join(__dirname, 'public/images', 'favicon.png')));
 
 var db = require('./config/db');
-require('./config/passport');
 require('./app/model/Post');
 require('./app/model/Comment');
 require('./app/model/User');
+require('./config/passport');
 
 // set our port
 var port = process.env.PORT || 8080;

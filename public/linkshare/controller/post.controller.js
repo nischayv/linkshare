@@ -7,13 +7,14 @@
         ])
         .controller('PostController', PostController);
 
-    PostController.$inject = ['PostService', '$routeParams'];
+    PostController.$inject = ['PostService', '$routeParams', 'AuthService'];
 
-    function PostController(PostService, $routeParams) {
+    function PostController(PostService, $routeParams, AuthService) {
         var vm = this;
         vm.post = {};
         vm.user = 'nischayv';
         vm.comment = '';
+        vm.isLoggedIn = AuthService.isLoggedIn;
         vm.addComment = addComment;
         vm.incrementUpvotes = incrementUpvotes;
         activate();

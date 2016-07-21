@@ -7,13 +7,15 @@
     <span style="font-size:20px; margin-left:10px;">
         <span ng-hide="post.link">{{comment.body}}</span>
     </span>
-    - by {{vm.user}}
+    <!-- - by {{vm.user}}-->
 </div>
-<form ng-submit="vm.addComment()"
-      style="margin-top:30px;">
+<form ng-submit="vm.addComment()" style="margin-top:30px;"  ng-show="isLoggedIn()">
     <h3>Add a new comment</h3>
     <div class="form-group">
         <input type="text" class="form-control" placeholder="Comment" ng-model="vm.comment">
     </div>
     <button type="submit" class="btn btn-primary">Post</button>
 </form>
+<div ng-hide="isLoggedIn()">
+    <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can comment.</h3>
+</div>

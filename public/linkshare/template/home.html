@@ -11,8 +11,11 @@
     <span style="font-size:15px; margin-left:5px;">
         <a href="" ng-click="vm.comments(post)">comments</a>
     </span>
+    <span ng-show="post.author">
+        posted by <a>{{post.author}}</a> |
+    </span>
 </div>
-<form ng-submit="vm.addPost()" style="margin-top:30px;">
+<form ng-submit="vm.addPost()" style="margin-top:30px;"  ng-show="isLoggedIn()">
     <h3>Add a new post</h3>
     <div class="form-group">
         <input type="text" class="form-control" placeholder="Title" ng-model="vm.title">
@@ -22,3 +25,6 @@
     </div>
     <button type="submit" class="btn btn-primary">Post</button>
 </form>
+<div ng-hide="isLoggedIn()">
+    <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add a post.</h3>
+</div>

@@ -7,13 +7,14 @@
         ])
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['HomeService', '$location'];
+    HomeController.$inject = ['HomeService', '$location', 'AuthService'];
 
-    function HomeController(HomeService, $location) {
+    function HomeController(HomeService, $location, AuthService) {
         var vm = this;
         vm.posts = [];
         vm.title = '';
         vm.link = '';
+        vm.isLoggedIn = AuthService.isLoggedIn;
         vm.addPost = addPost;
         vm.incrementUpvotes = incrementUpvotes;
         vm.comments = comments;
