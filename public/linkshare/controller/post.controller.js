@@ -31,7 +31,7 @@
         }
 
         function addComment() {
-            return PostService.addComment($routeParams.postId, vm.comment, vm.user)
+            return PostService.addComment($routeParams.postId, vm.comment)
                 .then(function(data) {
                     console.log(data);
                     vm.post.comments.push(data);

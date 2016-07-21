@@ -35,13 +35,13 @@
             }
         }
 
-        function addComment(postId, comment, user) {
+        function addComment(postId, comment) {
             return $resource('/api/posts/' + postId + '/comment', {}, {
                 execute: {
                     method: 'POST',
                     headers: {Authorization: 'Bearer' + AuthService.getToken()}
                 }
-            }).execute({body: comment, author: user}).$promise
+            }).execute({body: comment}).$promise
                 .then(success)
                 .catch(fail);
 
