@@ -35,6 +35,7 @@
         }
 
         function login() {
+            console.log(vm.user);
             return AuthService.login(vm.user)
                 .then(function() {
                     $location.path('/home');

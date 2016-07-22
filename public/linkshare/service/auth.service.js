@@ -66,7 +66,7 @@
             }
         }
 
-        function login() {
+        function login(user) {
             return $resource('/api/login', {}, {
                 execute: {
                     method: 'POST'
@@ -76,7 +76,7 @@
                 .catch(fail);
 
             function success(data) {
-                console.log('In auth service login'+data);
+                console.log('In auth service login' + data);
                 return saveToken(data.token);
             }
 
