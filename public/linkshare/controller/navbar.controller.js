@@ -5,14 +5,24 @@
         .module('navbar.controller', [
             'auth.service'
         ])
-        .controller('NavbarController', AuthController);
+        .controller('NavbarController', NavbarController);
 
-    AuthController.$inject = ['AuthService'];
+    NavbarController.$inject = ['AuthService', '$location'];
 
-    function AuthController(AuthService) {
+    function NavbarController(AuthService, $location) {
         var vm = this;
         vm.isLoggedIn = AuthService.isLoggedIn;
-        vm.logout = AuthService.logout;
-        vm.currentUser = AuthService.currentUser;
+        vm.logout = logout;
+        vm.user = AuthService.currentUser;
+        activate();
+
+        function activate() {
+            console.log(vm.isLoggedIn());
+        }
+
+        function logout() {
+            AuthService.logout();
+            $location.path('/login');
+        }
     }
 }());

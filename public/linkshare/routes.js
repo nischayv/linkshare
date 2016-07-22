@@ -31,10 +31,7 @@
                 templateUrl: 'linkshare/template/login.html',
                 controller: 'AuthController',
                 controllerAs: 'vm'
-            });
-            // .otherwise('/home');
-
-       // $locationProvider.html5Mode(true);
+            })
+            .otherwise('/login');
     }
-
 }());
