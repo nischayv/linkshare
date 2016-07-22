@@ -137,7 +137,6 @@ router.post('/api/register', function(req, res, next){
 });
 
 router.post('/api/login', function(req, res, next){
-    console.log(req.body);
     if(!req.body.username || !req.body.password){
         return res.status(400).json({message: 'Please fill out all fields'});
     }
@@ -151,7 +150,6 @@ router.post('/api/login', function(req, res, next){
             return res.status(401).json(info);
         }
     })(req, res, next);
-    // });
 });
 
 module.exports = router;
