@@ -13,10 +13,12 @@
         var vm = this;
         vm.user = {};
         vm.error = {};
+        vm.register = register;
+        vm.login = login;
         activate();
 
         function activate() {
-            if(AuthService.isLoggedIn) {
+            if(AuthService.isLoggedIn()) {
                 $location.path('/home');
             }
         }
