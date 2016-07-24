@@ -40,7 +40,7 @@
             return $resource('/api/posts', {}, {
                 execute: {
                     method: 'POST',
-                    headers: {Authorization: 'Bearer' + AuthService.getToken()}
+                    headers: {Authorization: 'Bearer ' + AuthService.getToken()}
                 }
             }).execute({title: title, link: link}).$promise
                 .then(success)
@@ -59,7 +59,7 @@
             return $resource('/api/posts/' + id + '/upvote', {}, {
                 execute: {
                     method: 'PUT',
-                    headers: {Authorization: 'Bearer' + AuthService.getToken()}
+                    headers: {Authorization: 'Bearer ' + AuthService.getToken()}
                 }
             }).execute().$promise
                 .then(success)

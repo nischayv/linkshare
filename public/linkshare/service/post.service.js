@@ -39,7 +39,7 @@
             return $resource('/api/posts/' + postId + '/comment', {}, {
                 execute: {
                     method: 'POST',
-                    headers: {Authorization: 'Bearer' + AuthService.getToken()}
+                    headers: {Authorization: 'Bearer ' + AuthService.getToken()}
                 }
             }).execute({body: comment}).$promise
                 .then(success)
@@ -58,7 +58,7 @@
             return $resource('/api/posts/' + postId + '/comment/'+ commentId + '/upvote', {}, {
                 execute: {
                     method: 'PUT',
-                    headers: {Authorization: 'Bearer' + AuthService.getToken()}
+                    headers: {Authorization: 'Bearer ' + AuthService.getToken()}
                 }
             }).execute().$promise
                 .then(success)
