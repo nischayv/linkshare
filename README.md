@@ -1,4 +1,4 @@
-# Linkshare Web App
+# Linkshare
 
 Linkshare is a web app that is very similar to Hacker News or Reddit, where users post links to latest new articles that are
 viewable to everyone. Users can upvote posts and also comment on them. Comments can be upvoted as well.
